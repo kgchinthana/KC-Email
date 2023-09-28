@@ -4,6 +4,12 @@
   backdrop-filter: blur(30px);
   margin-top: 0px;
 }
+.heading{
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: 'Jazz LET, fantasy';
+  color: #000000;
+}
 
 .nav-link {
   color: white !important;

@@ -13,8 +13,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '../../../appStore';
+import { makeStyles } from '@material-ui/core/styles';
+
+import MessageIcon from '@material-ui/icons/Message';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import HistoryIcon from '@material-ui/icons/History';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const drawerWidth = 300;
 
@@ -48,7 +54,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -72,8 +77,6 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const updateOpen = useAppStore((state) => state.updateOpen);
   const open = useAppStore((state) => state.dopen);
-  
-
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -90,10 +93,16 @@ export default function Sidebar() {
           </IconButton>
         </DrawerHeader>
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate('/AdminDashboard')}}>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+            onClick={() => {
+              navigate('/admin-dashboard');
+            }}
+          >
             <ListItemButton
               sx={{
-                minHeight: 60,
+                minHeight: 80,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
@@ -105,16 +114,26 @@ export default function Sidebar() {
                   justifyContent: 'center',
                 }}
               >
+                <DashboardIcon style={{ fontSize: 40 }} />
               </ListItemIcon>
-              <ListItemText primary="Dashboard" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary='Dashboard'
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         </List>
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate('/AdminDashboard/mail')}}>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+            onClick={() => {
+              navigate('/admin-dashboard/message-service');
+            }}
+          >
             <ListItemButton
               sx={{
-                minHeight: 60,
+                minHeight: 80,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
@@ -125,17 +144,28 @@ export default function Sidebar() {
                   mr: open ? 3 : 'auto',
                   justifyContent: 'center',
                 }}
+
               >
+                <MessageIcon style={{ fontSize: 40 }} />
               </ListItemIcon>
-              <ListItemText primary="Message System" sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary='Message System'
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         </List>
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate('/AdminDashboard/manufacturer-recommendation')}}>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+            onClick={() => {
+              navigate('/admin-dashboard/message-history');
+            }}
+          >
             <ListItemButton
               sx={{
-                minHeight: 60,
+                minHeight: 80,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
@@ -147,16 +177,26 @@ export default function Sidebar() {
                   justifyContent: 'center',
                 }}
               >
+                <HistoryIcon style={{ fontSize: 40 }} />
               </ListItemIcon>
-              <ListItemText primary= 'Message History' sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText
+                primary='Message History'
+                sx={{ opacity: open ? 1 : 0 }}
+              />
             </ListItemButton>
           </ListItem>
         </List>
         <List>
-          <ListItem disablePadding sx={{ display: 'block' }} onClick={()=>{navigate('/AdminDashboard/message-system')}}>
+          <ListItem
+            disablePadding
+            sx={{ display: 'block' }}
+            onClick={() => {
+              navigate('/login');
+            }}
+          >
             <ListItemButton
               sx={{
-                minHeight: 60,
+                minHeight: 80,
                 justifyContent: open ? 'initial' : 'center',
                 px: 2.5,
               }}
@@ -168,14 +208,13 @@ export default function Sidebar() {
                   justifyContent: 'center',
                 }}
               >
+                <ExitToAppIcon style={{ fontSize: 40 }} />
               </ListItemIcon>
-              <ListItemText primary= 'Log out' sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary='Log out' sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
           </ListItem>
         </List>
-        
       </Drawer>
-      
     </Box>
   );
 }

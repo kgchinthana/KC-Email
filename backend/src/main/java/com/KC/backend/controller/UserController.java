@@ -14,20 +14,20 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @Autowired
     private ModelMapper modelMapper;
+
+
+
     @PostMapping("/registercustomer")
-    public UserDTO saveUser(@RequestBody UserDTO userDTO) {
+    public UserDTO saveUser(@RequestBody UserDTO userDTO){
         return userService.saveUser(userDTO);
     }
     @GetMapping("/logincustomer/{email}/{password}")
     public String getUserByUserID(@PathVariable String email , @PathVariable String password){
-        String userPassword = userService.getUserByEmail(email);
+        boolean authentication = userService.getUserByEmail(email,password);
         String message;
-        System.out.println(userPassword);
-        System.out.println(password);
-        if(userPassword.contains(password)){
+        if(authentication){
             message= "Login is successfully completed";
         }
         else {

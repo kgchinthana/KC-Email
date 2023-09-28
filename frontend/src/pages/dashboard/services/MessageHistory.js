@@ -1,18 +1,18 @@
 import "../styles/messagehistory.css"
 import Topbar from '../components/Navbar';
 import Sidebar from '../components/Sidebar';
-import Mail from '../components/Mail';
+import Datatable from '../components/Datatable';
 
-const MessageService = () => {
+const MessageHistory = () => {
   return (
     <div className="list">
       <Topbar/>
       <div className="listContainer">
         <Sidebar/>
-        <Mail/>
+        <Datatable/>
       </div>
     </div>
   )
 }
 
-export default MessageService
+export default MessageHistory

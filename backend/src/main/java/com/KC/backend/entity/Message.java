@@ -16,4 +16,5 @@ public class Message {
     private String to_email;
     private String subject;
     private String text;
+
 }

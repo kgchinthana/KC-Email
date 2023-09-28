@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { Link, useNavigate } from 'react-router-dom';
@@ -9,19 +9,9 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import {
-  TextField,
-  Grid,
-  Container,
-  MenuItem,
-  InputLabel,
-  FormControl,
-  Select,
-  InputAdornment,
-  Button,
-  Alert,
-  Snackbar,
-} from '@mui/material';
+import { TextField, Grid, Container, Button } from '@mui/material';
+import { Image } from 'react-bootstrap';
+
 
 const Register = () => {
   const [first_name, setFname] = useState('');
@@ -30,10 +20,11 @@ const Register = () => {
   const [status, setStatus] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [open, setOpen] = React.useState(false);
   const [textInputErrorMessageEmail, setTextInputErrorMessageEmail] =
     useState(null);
   const navigate = useNavigate();
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +45,6 @@ const Register = () => {
         setEmail('');
         setBirthday('');
         setPassword('');
-        setOpen(true);
         navigate('/login');
       })
       .catch((error) => {
@@ -89,7 +79,7 @@ const Register = () => {
           {/* Left side with register customer image */}
           <Grid item xs={12} md={6}>
             <div className='register__customer__img'>
-              <img src={register}></img>
+              <Image src={register} fluid alt='register image' />
             </div>
           </Grid>
 
@@ -139,16 +129,17 @@ const Register = () => {
                   </Grid>
 
                   <Grid item xs={12}>
-                    {/* Telephone Number */}
+                    {/* Status */}
+               
                     <TextField
                       className='input-text'
                       id='outlined-basic'
                       label='Status'
                       variant='outlined'
                       value={status}
-                      onChange={(e) => setStatus(e.target.value)}
                       size='small'
                       style={{ width: '80%' }}
+                      onChange={(e) => setStatus(e.target.value)}
                       required
                     />
                   </Grid>
@@ -181,12 +172,12 @@ const Register = () => {
                       onChange={(e) => setPassword(e.target.value)}
                       style={{
                         width: '80%',
-                        height: '5%',
+                        
                       }}
                       required
                     />
                   </Grid>
-                  {/* Birthday */} 
+                  {/* Birthday */}
                   <Grid item xs={12}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DatePicker
@@ -196,10 +187,10 @@ const Register = () => {
                         onChange={(e) => {
                           setBirthday(e);
                         }}
-                        sx={{ width: '80%', height: '5%' }}
+                        sx={{ width: '80%' }}
                       />
                     </LocalizationProvider>
-                  </Grid> 
+                  </Grid>
                   <Grid item xs={12} style={{ width: '80%' }}>
                     {/* Signup Button */}
                     <div className='register__vehicle__submitbtn'>
